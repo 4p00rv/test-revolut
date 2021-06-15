@@ -6,11 +6,11 @@
 
 # Do things
 
-- [ ] Python setup
+- [x] Python setup
+- [x] Docker setup
+- [x] Create http listener
 - [ ] TDD setup
-- [ ] Docker setup
 - [ ] docker-compose setup for local testing
-- [ ] Create http listener
 - [ ] Basic classes for requests
 - [ ] DB schema management
 - [ ] Implement concurrency for better performance
