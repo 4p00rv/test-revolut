@@ -1,0 +1,4 @@
+flask==2.0.1
+psycopg2==2.8.6
+Flask-SQLAlchemy==2.5.1
+Flask-Migrate==3.0.1
