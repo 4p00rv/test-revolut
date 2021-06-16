@@ -9,7 +9,7 @@
 - [x] Python setup
 - [x] Docker setup
 - [x] Create http listener
-- [ ] TDD setup
+- [x] TDD setup
 - [ ] docker-compose setup for local testing
 - [ ] Basic classes for requests
 - [ ] DB schema management

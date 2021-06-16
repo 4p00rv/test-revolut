@@ -14,6 +14,7 @@ ENV PATH="/app/.local/bin:${PATH}"
 
 COPY ./scripts scripts/
 COPY requirements.txt requirements.txt
+COPY requirements-dev.txt requirements-dev.txt
 COPY requirements-prod.txt requirements-prod.txt
 
 ARG ENV
