@@ -24,7 +24,7 @@ class ProductionConfig(Config):
     TESTING = False
     DEBUG = False
     ENV='production'
-    LOGLEVEL='error'
+    LOGLEVEL=os.getenv('LOGLEVEL', "error").upper()
 
 app_config = {
     'development': DevelopmentConfig,

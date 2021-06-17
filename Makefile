@@ -4,7 +4,8 @@ build:
 build-prod:
 	docker build --build-arg ENV=production -t ${IMAGE}-prod .
 dev: build
-	#docker run -p 80:80 -e FLASK_ENV=development -e SECRET_KEY=dev -e LOGLEVEL=INFO ${IMAGE}
-	docker run -p 80:80 -e ENV=development ${IMAGE}
+	docker run -p $(port):8080 -e ENV=development ${IMAGE}
+prod: build-prod
+	docker run -p $(port):8080 -e ENV=production ${IMAGE}-prod
 test: build
 	docker run -e ENV=testing ${IMAGE} nose2 tests

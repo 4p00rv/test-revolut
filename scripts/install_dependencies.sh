@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if [[ "$ENV" == "development" ]]; then
   pip install --no-cache-dir -r requirements-dev.txt --user

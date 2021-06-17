@@ -1,5 +1,7 @@
 FROM python:3.10.0b2-buster
 
+# Install dumb-init
+RUN apt-get update && apt-get install -y dumb-init
 WORKDIR /app
 
 # Set up separate user for server
@@ -22,6 +24,8 @@ RUN ./scripts/install_dependencies.sh
 
 COPY . .
 ENV FLASK_APP=server
-EXPOSE 80
+ENV PORT 8080
+EXPOSE 8080
 
-CMD ["python", "-m", "flask", "run", "-p", "80", "--host=0.0.0.0"]
+ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["./scripts/start.sh"]
