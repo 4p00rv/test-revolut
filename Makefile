@@ -7,4 +7,4 @@ dev: build
 	#docker run -p 80:80 -e FLASK_ENV=development -e SECRET_KEY=dev -e LOGLEVEL=INFO ${IMAGE}
 	docker run -p 80:80 -e ENV=development ${IMAGE}
 test: build
-	docker run ${IMAGE} nose2 tests
+	docker run -e ENV=testing ${IMAGE} nose2 tests

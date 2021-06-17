@@ -4,9 +4,8 @@ import logging
 
 # local import
 from server.config import app_config
+from server.user import init_db
 
-# initialize sql-alchemy
-db = SQLAlchemy()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -20,6 +19,6 @@ def create_app(config_name):
     app.config.from_object(config)
     app.logger.info("Current env: %s"% app.env)
     #app.config.from_pyfile('config.py')
-    db.init_app(app)
+    init_db(app)
 
     return app

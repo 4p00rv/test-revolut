@@ -6,7 +6,7 @@ class Config:
     """
     DEBUG = False
     SQLALCHEMY_DATABASE_URI  = os.getenv(
-         'DB_URI', "postgres://postgres:postgres@localhost:5432/postgres")
+        'DB_URI', "sqlite://")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY=os.getenv('SECRET', "dumb-secret")
     LOGLEVEL=os.getenv('LOGLEVEL', "info").upper()
