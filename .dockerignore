@@ -1,3 +1,6 @@
 .git
 README.md
 Dockerfile
+Makefile
+deployment.yml
+kubedeploy.yml.tpl
