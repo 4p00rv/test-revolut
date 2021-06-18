@@ -14,9 +14,9 @@
 - [x] DB schema management
 - [x] Kubernetes deployment file
 - [x] Deployment instructions
-- [ ] Readiness and Liveness probe
 - [ ] Mount secrets for database connection
-- [ ] Systems diagram
+- [x] Systems diagram
+- [ ] Readiness and Liveness probe
 - [ ] docker-compose setup for local testing
 - [ ] create database index for better query response
 - [ ] Read and write database routes
@@ -35,7 +35,7 @@ The following instructions assume that the developer has Docker installed.
 
 ## Directory structure
 
-- `scripts`: This holds the scripts required for distinguishing dependecies installation in dev and prod environment.
+- `scripts`: This holds the scripts required for distinguishing dependencies installation in dev and prod environment.
 - `server`: Holds the application code.
 - `tests`: Tests reside here.
 
@@ -53,12 +53,12 @@ The following instructions assume that the developer has Docker installed.
 Upload the artifacts to repository using: 
 
 ```bash
-make org=revolut upload-pro
+make org=revolut upload-prod
 ```
 
-The above command will first build the image and on success upload it to the organisations repository. 
+The above command will first build the image and on success upload it to the organizations repository. 
 
-The above command also outputs a deployment.yml file which can then be used to update kubernetes cluster using:
+The above command also outputs a deployment.yml file which can then be used to update Kubernetes cluster using:
 
 ```bash
 kubectl apply -f deployment.yml
@@ -66,4 +66,17 @@ kubectl apply -f deployment.yml
 
 ### Zero downtime upgrade
 
-For zero downtime upgrade we are using kubernetes default rolling update deployment strategy. We need to make sure that the development cycle follows backwards compatibilty for this strategy to give best results.
+For zero downtime upgrade we are using Kubernetes default rolling update deployment strategy. We need to make sure that the development cycle follows backwards compatibility for this strategy to give best results.
+
+
+
+## Systems Diagram
+
+![systems-diagram](./systems-diagram.png)
+
+- The above is a systems diagram of the setup. We are using EKS for deploying our service in Kubernetes default namespace. 
+
+- The nodes are in private subnet of the vpc and uses the NAT in public subnet to communicate with internet.
+
+- The datebase is a postgres-RDS in a separate private subnet.
+- We are exposing the service using Service revolut of type LoadBalancer which creates a ELB in a public subnet in the same availability zone.
