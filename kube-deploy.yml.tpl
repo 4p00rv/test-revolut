@@ -19,6 +19,12 @@ spec:
         - name: revolut-test
           image: 4p00rv/revolut-test:${TAG}
           imagePullPolicy: "Always"
+          env:
+            - name: DB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: DB_URI
           ports:
             - containerPort: 8080
           resources:

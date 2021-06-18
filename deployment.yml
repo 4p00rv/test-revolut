@@ -17,8 +17,14 @@ spec:
     spec:
       containers:
         - name: revolut-test
-          image: 4p00rv/revolut-test:58e9521
+          image: 4p00rv/revolut-test:ac173e6
           imagePullPolicy: "Always"
+          env:
+            - name: DB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: database
+                  key: DB_URI
           ports:
             - containerPort: 8080
           resources:

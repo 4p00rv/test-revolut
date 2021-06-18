@@ -6,6 +6,8 @@
 
 # Do things
 
+#### Must have
+
 - [x] Python setup
 - [x] Docker setup
 - [x] Create http listener
@@ -14,8 +16,11 @@
 - [x] DB schema management
 - [x] Kubernetes deployment file
 - [x] Deployment instructions
-- [ ] Mount secrets for database connection
+- [x] Mount secrets for database connection
 - [x] Systems diagram
+
+#### Improvements
+
 - [ ] Readiness and Liveness probe
 - [ ] docker-compose setup for local testing
 - [ ] create database index for better query response
@@ -49,6 +54,12 @@ The following instructions assume that the developer has Docker installed.
   - Supported Methods: `['GET', 'PUT']`
 
 ## Deployment
+
+First, we will create the required secret in K8s using the following command. Replace `sqlite://` with correct DB URI.
+
+```bash
+kubectl create secrets generic database --from-literal="DB_URI=sqlite://"
+```
 
 Upload the artifacts to repository using: 
 
